@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./App.css";
+import { MONTHS, DAYS } from "./constants";
 import { API_DETAILS } from "./config";
 
 function App() {
@@ -8,36 +9,12 @@ function App() {
   const [weather, setWeather] = useState({});
   const [iconUrl, setIconUrl] = useState('');
 
-  const rainyKeys = ["Drizzle", "Rain"];
+  const rainyKeys = ["Drizzle", "Rain", "Thunderstorm"];
 
   const dateBuilder = (d) => {
-    let months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    let day = days[d.getDay()];
+    let day = DAYS[d.getDay()];
     let date = d.getDate();
-    let month = months[d.getMonth()];
+    let month = MONTHS[d.getMonth()];
     let year = d.getFullYear();
 
     return `${day} ${date} ${month} ${year}`;
@@ -52,6 +29,7 @@ function App() {
           setWeather(result);
           setIconUrl(imgurl);
           setQuery("");
+          console.log(result);
         });
     }
   };
