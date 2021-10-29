@@ -9,6 +9,10 @@
   background-image: url("./assets/warm-bg.jpg");
 }
 
+.rain {
+  background-image: url("./assets/rain-bg.jpg");
+}
+
 main {
   min-height: 100vh;
   background-image: linear-gradient(
