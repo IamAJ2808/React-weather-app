@@ -22,4 +22,4 @@ export const MONTHS = [
     "Saturday",
   ];
 
-  export const RAINY_KEYS = ["Drizzle", "Rain", "Thunderstorm"];
+  export const RAINY_KEYS = ["Drizzle", "Rain", "Thunderstorm","Rainfall"];
