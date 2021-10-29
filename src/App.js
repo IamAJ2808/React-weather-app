@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import { MONTHS, DAYS } from "./constants";
+import { MONTHS, DAYS, RAINY_KEYS } from "./constants";
 import { API_DETAILS } from "./config";
 
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [iconUrl, setIconUrl] = useState('');
-
-  const rainyKeys = ["Drizzle", "Rain", "Thunderstorm"];
 
   const dateBuilder = (d) => {
     let day = DAYS[d.getDay()];
@@ -36,7 +34,7 @@ function App() {
 
   const getBgImage = () => {
     let bgImgClass = "App";
-    if(weather.weather && rainyKeys.includes(weather.weather[0].main)) {
+    if(weather.weather && RAINY_KEYS.includes(weather.weather[0].main)) {
       bgImgClass = "App rain";
     }else if(weather.main) {
       bgImgClass = ((weather.main.temp > 16) ? "App warm" : "App");
