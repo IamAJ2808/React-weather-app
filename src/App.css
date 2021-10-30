@@ -1,16 +1,36 @@
 .App {
-  background-image: url("./assets/cold-bg.jpg");
+  background-image: url("./assets/atmosphere-bg.jpg");
   background-size: cover;
   background-position: bottom;
   transition: 0.4s ease-out;
 }
 
-.warm {
-  background-image: url("./assets/warm-bg.jpg");
+.thunderstorm {
+  background-image: url("./assets/thunderstorm-bg.jpg");
+}
+
+.snow {
+  background-image: url("./assets/snow-bg.jpg");
 }
 
 .rain {
   background-image: url("./assets/rain-bg.jpg");
+}
+
+.mist {
+  background-image: url("./assets/mist-bg.jpg");
+}
+
+.drizzle {
+  background-image: url("./assets/drizzle-bg.jpg");
+}
+
+.clouds {
+  background-image: url("./assets/clouds-bg.jpg");
+}
+
+.clear {
+  background-image: url("./assets/clear-bg.jpg");
 }
 
 main {

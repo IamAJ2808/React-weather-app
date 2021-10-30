@@ -22,4 +22,11 @@ export const MONTHS = [
     "Saturday",
   ];
 
-  export const RAINY_KEYS = ["Drizzle", "Rain", "Thunderstorm","Rainfall"];
+  export const WEATHER_BG_CLASS = {
+    Thunderstorm: "thunderstorm",
+    Drizzle: "drizzle",
+    Rain: "rain",
+    Snow: "snow",
+    Clear: "clear",
+    Clouds: "clouds"
+  };

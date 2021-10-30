@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import { MONTHS, DAYS, RAINY_KEYS } from "./constants";
+import { MONTHS, DAYS, WEATHER_BG_CLASS } from "./constants";
 import { API_DETAILS } from "./config";
+
+import Toast from "./widgets/toast/toast";
 
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [iconUrl, setIconUrl] = useState('');
+  const [toastOptions, setToastOptions] = useState({message: "", status: false});
 
   const dateBuilder = (d) => {
     let day = DAYS[d.getDay()];
@@ -23,27 +26,30 @@ function App() {
       fetch(`${API_DETAILS.baseUrl}weather?q=${query}&units=metric&appid=${API_DETAILS.key}`)
         .then((res) => res.json())
         .then((result) => {
-          const imgurl = result.weather ? `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png` : '';
-          setWeather(result);
-          setIconUrl(imgurl);
-          setQuery("");
-          console.log(result);
+          if(result.cod === 200) {
+            const imgurl = result.weather ? `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png` : '';
+            setWeather(result);
+            setIconUrl(imgurl);
+            setQuery("");
+          } else {
+            let options = {message: result.message, status: true};
+            setToastOptions(options);
+            setTimeout(() => { setToastOptions({message: "", status: false}); }, 3000);
+          }
         });
     }
   };
 
   const getBgImage = () => {
-    let bgImgClass = "App";
-    if(weather.weather && RAINY_KEYS.includes(weather.weather[0].main)) {
-      bgImgClass = "App rain";
-    }else if(weather.main) {
-      bgImgClass = ((weather.main.temp > 16) ? "App warm" : "App");
+    let bgImgClass = "";
+    if(weather.weather) {
+      bgImgClass = WEATHER_BG_CLASS[weather.weather[0].main];
     }
     return bgImgClass;
   }
 
   return (
-    <div className={getBgImage()}>
+    <div className={`App ${getBgImage()}`}>
       <main>
         <div className="search-box">
           <input
@@ -76,6 +82,7 @@ function App() {
           ""
         )}
       </main>
+      {toastOptions.status && <Toast message={toastOptions.message} />}
     </div>
   );
 }
