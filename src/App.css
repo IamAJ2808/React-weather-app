@@ -117,15 +117,45 @@ main {
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 
+.weather-details {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 50px auto;
+  flex-wrap: wrap;
+}
+
+.weather-details > .detail-container {
+  width: 170px;
+  height: 170px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.detail-container > .detail-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-container > .detail-value {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
 @media screen and (max-width: 992px) {
-    .weather-box .temp {
-        width: 80%;
-    }
+  .weather-box .temp {
+    width: 80%;
   }
-  
-  /* On screens that are 600px or less, set the background color to olive */
-  @media screen and (max-width: 600px) {
-    .weather-box .temp {
-        width: 100%;
-    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  .weather-box .temp {
+    width: 100%;
   }
+}
