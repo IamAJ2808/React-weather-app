@@ -2,9 +2,9 @@
 
 ## Dynamic Background based on the weather temperature
 
-![Screenshot of Cloud](https://github.com/IamAravindKumar/React-weather-app/blob/master/src/assets/Banner1.png "Screenshot of Cloud")
+![Screenshot of Cloud](https://github.com/IamAravindKumar/React-weather-app/blob/master/src/assets/Banner1.jpg "Screenshot of Cloud")
 
-![Screenshot of Haze](https://github.com/IamAravindKumar/React-weather-app/blob/master/src/assets/Banner2.png "Screenshot of Haze")
+![Screenshot of Haze](https://github.com/IamAravindKumar/React-weather-app/blob/master/src/assets/Banner2.jpg "Screenshot of Haze")
 
 # Technologies Used
 - HTML5
