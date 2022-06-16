@@ -28,5 +28,6 @@ export const MONTHS = [
     Rain: "rain",
     Snow: "snow",
     Clear: "clear",
-    Clouds: "clouds"
+    Clouds: "clouds",
+    Mist: "mist"
   };
