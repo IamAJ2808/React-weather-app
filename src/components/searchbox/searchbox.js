@@ -1,23 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./searchbox.css";
-import { API_DETAILS } from "../../config";
+
+const getWeatherData = (query) => {
+  return fetch(
+    `${process.env.REACT_APP_WEATHER_API_BASEURL}weather?q=${query}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+  )
+    .then((res) => res.json())
+    .then((result) => result);
+};
 
 function SearchBox({ searchHandler }) {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState("chennai");
+
+    // const getWeatherData = () => {
+    //   fetch(
+    //     `${process.env.REACT_APP_WEATHER_API_BASEURL}weather?q=${query}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+    //   )
+    //     .then((res) => res.json())
+    //     .then((result) => {
+    //         searchHandler(result);
+    //         setQuery("");
+    //     });
+    // };
+
+    useEffect(() => {
+      getWeatherData(query).then((result) => {
+        searchHandler(result);
+        setQuery("");
+      });
+    },[]);
 
     const search = (evt) => {
         if (evt.key === "Enter") {
-          fetch(
-            `${API_DETAILS.baseUrl}weather?q=${query}&units=metric&appid=${API_DETAILS.key}`
-          )
-            .then((res) => res.json())
-            .then((result) => {
-                searchHandler(result);
-                setQuery("");
-            });
+          getWeatherData(query).then((result) => {
+            searchHandler(result);
+            setQuery("");
+          });
         }
-      };
+    };
 
   return (
     <div className="search-box">
@@ -27,7 +48,7 @@ function SearchBox({ searchHandler }) {
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value)}
         value={query}
-        onKeyPress={search}
+        onKeyDown={search}
       />
     </div>
   );

@@ -16,11 +16,9 @@
 - clone app
 - npm install
 - Get API key from weather API website.
-- Create config.js file in the src folder and add below code
-  export const API_DETAILS = {
-    key: "Your API Key",
-    baseUrl: "https://api.openweathermap.org/data/2.5/",
-  };
+- Create .env.local file in the root folder and add below code
+    REACT_APP_WEATHER_API_KEY=Your API Key
+    REACT_APP_WEATHER_API_BASEURL=https://api.openweathermap.org/data/2.5/
 - npm start
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
