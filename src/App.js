@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import "./App.css";
 import { WEATHER_BG_CLASS } from "./constants";
@@ -16,7 +16,7 @@ function App() {
     status: false,
   });
 
-  const searchHandler = (result) => {
+  const searchHandler = useCallback((result) => {
     if (result.cod === 200) {
       const imgurl = result.weather
         ? `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`
@@ -30,7 +30,7 @@ function App() {
         setToastOptions({ message: "", status: false });
       }, 3000);
     }
-  };
+  },[]);
 
   const getBgImage = () => {
     let bgImgClass = "";
